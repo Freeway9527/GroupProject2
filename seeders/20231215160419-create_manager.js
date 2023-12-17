@@ -3,38 +3,38 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('managers', [{
+    return queryInterface.bulkInsert('Managers', [{
       id: 1,
-      firstName: 'Big',
-      lastName: 'Daddy',
+      firstname: 'Big',
+      lastname: 'Daddy',
       department: 'Information Technology',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       id: 2,
-      firstName: 'Master',
-      lastName: 'Chief',
+      firstname: 'Master',
+      lastname: 'Chief',
       department: 'Human Resource',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       id: 3,
-      firstName: 'Solid',
-      lastName: 'Snake',
+      firstname: 'Solid',
+      lastname: 'Snake',
       department: 'Operations',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       id: 4,
-      firstName: 'Samanosuke',
-      lastName: 'Akechi',
+      firstname: 'Samanosuke',
+      lastname: 'Akechi',
       department: 'Marketing',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       id: 5,
-      firstName: 'Lora',
-      lastName: 'Croft',
+      firstname: 'Lora',
+      lastname: 'Croft',
       department: 'Finance',
       createdAt: new Date(),
       updatedAt: new Date()
@@ -42,6 +42,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('managers', null, {});
+    return queryInterface.bulkDelete('Managers', null, {});
   }
 };

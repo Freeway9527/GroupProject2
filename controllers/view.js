@@ -40,14 +40,15 @@ function renderEmployees(req, res) {
   db.Employee.findAll({
     where: {},
     include: [db.Manager],
-    raw: true
+    raw: true,
+    order: [['id', 'ASC']]
   }).then((employees) => {
     const data = employees.map((employee, index) => ({
       ...employee,
       no: index + 1,
       status: employee.status ? "Regular" : "Otherwise",
       hireDate: moment(employee.hireDate).format("MMM Do YYYY"),
-      terminateDate: moment(employee.terminateDate).format("MMM Do YYYY")
+      terminateDate: employee.terminateDate ? moment(employee.terminateDate).format("MMM Do YYYY") : "N/A",
     }))
     res.render('employees', { employees: data, user: req.session.user })
   });
@@ -73,7 +74,7 @@ function renderEmployeeEdit(req, res) {
       const data = {
         ...employee,
         hireDate: moment(employee.hireDate).format("YYYY-MM-DD"),
-        terminateDate: moment(employee.terminateDate).format("YYYY-MM-DD")
+        terminateDate: employee.terminateDate ? moment(employee.terminateDate).format("YYYY-MM-DD") : "null",
       }
       res.render('employee', { employee: data, managers, user: req.session.user });
     })
@@ -82,7 +83,10 @@ function renderEmployeeEdit(req, res) {
 
 // Display all managers table
 function renderManagers(req, res) {
-  db.Manager.findAll({ raw: true }).then((managers) => {
+  db.Manager.findAll({
+    raw: true,
+    order: [['id', 'ASC']]
+  }).then((managers) => { 
     const data = managers.map((manager, index) => ({
       ...manager,
       no: index + 1,

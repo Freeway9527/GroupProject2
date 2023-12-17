@@ -10,6 +10,14 @@ module.exports = function (sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true,
     },
+    firstname: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    lastname: {
+      type: DataTypes.STRING,
+      allownull: false
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -45,7 +53,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     terminateDate: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: true
     }
   }, {
     sequelize,
