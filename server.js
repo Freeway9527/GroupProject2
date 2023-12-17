@@ -1,59 +1,77 @@
-const express = require('express');
+// *****************************************************************************
+// Server.js - This file is the initial starting point for the Node/Express server.
+//
+// ******************************************************************************
+// *** Dependencies
+// =============================================================
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 const session = require('express-session');
-const exphbs = require('express-handlebars');
-const path = require('path');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const helpers = require('./utils/helpers');
 
-// Import Sequelize connection
-const sequelize = require('./config/connection');
-
-// Create an instance of Express
+// Sets up the Express App
+// =============================================================
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Define session options
-const sess = {
-  secret: 'Super secret secret',
-  cookie: { maxAge: 900000 }, // Session expires after 15 minutes of inactivity
+// Requiring our models for syncing
+const db = require("./models");
+
+// Sets up the Express app to handle data parsing
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
+// Static directory
+app.use(express.static("public"));
+
+// Cors
+app.use(cors());
+
+// Session
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  secret: 'your-secret-key', // Replace with a real secret key
   resave: false,
   saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
-};
+  cookie: { secure: false } // Set to true if using https
+}));
 
-// Set up session middleware
-app.use(session(sess));
+// Set Handlebars.
+const Handlebars = require('handlebars')
+const { engine } = require("express-handlebars");
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
 
-// Set up middleware to parse JSON and URL-encoded data
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.engine("handlebars", engine({
+  defaultLayout: "main",
+  helpers: {
+    eq: function (v1, v2) {
+      return v1 === v2;
+    }
+  },
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
+app.set("view engine", "handlebars");
+app.set('views', './views');
 
-// Set up static files
-app.use(express.static(path.join(__dirname, 'public')));
+// Routes
+// =============================================================
+const authController = require("./controllers/auth.js");
+const employeeController = require("./controllers/employee.js");
+const managerController = require("./controllers/manager.js");
+const viewController = require("./controllers/view.js");
 
-// Set up Handlebars engine
-const hbs = exphbs.create({ helpers });
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+app.use(authController);
+app.use(employeeController);
+app.use(managerController);
+app.use(viewController);
 
-// Define routes
-const apiRoutes = require('./controllers/api');
-const homeRoutes = require('./controllers/homeRoutes');
-
-// Use routes
-app.use('/api', apiRoutes);
-app.use('/', homeRoutes);
-
-// Handle 404 errors
-app.use((req, res) => {
-  res.status(404).end('Not Found');
-});
-
-// Sync the Sequelize models and start the server
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Syncing our sequelize models and then starting our Express app
+// =============================================================
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
+    console.log("App listening on PORT " + PORT);
   });
 });

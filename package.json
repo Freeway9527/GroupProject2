@@ -1,26 +1,36 @@
 {
-  "name": "groupproject2",
+  "name": "post-author-association",
   "version": "1.0.0",
-  "description": "Group Project 2 Employee Tracker",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node seeds/index.js"
+    "watch": "nodemon server.js",
+    "seed:create": "npx sequelize-cli seed:generate --name",
+    "seed:run": "npx sequelize-cli db:seed:all",
+    "seed:undo": "npx sequelize-cli db:seed:undo",
+    "seed:undo:all": "npx sequelize-cli db:seed:undo:all"
   },
+  "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
     "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
     "connect-session-sequelize": "^7.1.7",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-handlebars": "^7.1.2",
     "express-session": "^1.17.3",
-    "handlebars": "^4.7.8",
+    "moment": "^2.29.4",
     "mysql2": "^3.6.5",
     "nodemon": "^3.0.2",
-    "seed": "^0.4.4",
+    "seed": "^0.4.4"
+  },
+  "devDependencies": {
     "sequelize": "^6.35.2"
   }
 }
