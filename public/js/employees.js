@@ -6,3 +6,7 @@
 // such as delete, edit, create
 
 // 2. delete employee function to delete employee by and ID
+
+const deleteEmployee = async (event) => {
+addEventListener("click", )
+}
