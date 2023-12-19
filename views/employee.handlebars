@@ -1,5 +1,33 @@
 <!-----Templete form for editing or creating employee records--------->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{Create Employee}}</title>
+</head>
 
+<body>
+
+    <h1>{{Create Employee}}</h1>
+
+    <form action="{{action}}" method="post">
+        <!-- Employee Name -->
+        <label for="firstName">First name:</label>
+        <input type="text" id="firstName" name="firstName" value="{{employee.firstName}}">
+        <label for="lastName">Last name:</label>
+        <input type="text" id="lastName" name="lastName" value="{{employee.lastName}}">
+
+        <!-- Employee Position -->
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" value="{{employee.position}}" required>
+
+        <!-- Add other fields as needed -->
+
+        <button type="submit">Save</button>
+    </form>
+
+</body>
+
+</html>
 
 
 
