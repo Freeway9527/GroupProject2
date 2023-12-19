@@ -53,7 +53,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     terminateDate: {
       type: DataTypes.DATE,
-      allowNull: true
+      allowNull: true,
     }
   }, {
     sequelize,
