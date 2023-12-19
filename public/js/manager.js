@@ -8,3 +8,7 @@
       // error: (msg) => {
         // showAlert(msg.statusText)
         // }
+        const createUpdateEmployee = async (event) => {
+        event.preventDefault();
+        addEventListener("click", )
+        }
