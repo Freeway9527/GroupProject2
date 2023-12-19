@@ -53,20 +53,80 @@
       </div>
     </nav>
     <!-- END NAV -->
-
     <div class="container">
       <div class="section">
         <div class="columns">
           <div class="column has-text-centered">
-            <h1 class="title" style="color: ghostwhite;">Bulma Card Layout Template</h1><br>
+            <h1 class="title" style="color: black;">Employee Database</h1><br>
           </div>
         </div>
         <div id="app" class="row columns is-multiline">
+          <!--First Card-->
           <div v-for="card in cardData" key="card.id" class="column is-4">
             <div class="card large">
               <div class="card-image">
                 <figure class="image is-16by9">
-                  <img :src="card.image" alt="Image">
+                  <img src="https://g.foolcdn.com/editorial/images/454032/happy-coworkers_gettyimages-512003912.jpg" alt="Image">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <img :src="card.avatar" alt="Image">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <p class="title is-4 no-padding">{{card.user.title}}</p>
+                    <p>
+                      <span class="title is-6">
+                        <a :href=`http://twitter.com/${card.user.handle}`> {{card.user.handle}} </a> </span> </p>
+                    <p class="subtitle is-6">{{card.user.title}}</p>
+                  </div>
+                </div>
+                <div class="content">
+                  {{card.content}}
+                  <div class="background-icon"><span class="icon-twitter"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Second Card-->
+          <div v-for="card in cardData" key="card.id" class="column is-4">
+            <div class="card large">
+              <div class="card-image">
+                <figure class="image is-16by9">
+                  <img src="https://i.pinimg.com/originals/12/16/5a/12165a0f8f8087f59574ae7c4ccc260e.jpg" alt="Image">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                    <figure class="image is-48x48">
+                      <img :src="card.avatar" alt="Image">
+                    </figure>
+                  </div>
+                  <div class="media-content">
+                    <p class="title is-4 no-padding">{{card.user.title}}</p>
+                    <p>
+                      <span class="title is-6">
+                        <a :href=`http://twitter.com/${card.user.handle}`> {{card.user.handle}} </a> </span> </p>
+                    <p class="subtitle is-6">{{card.user.title}}</p>
+                  </div>
+                </div>
+                <div class="content">
+                  {{card.content}}
+                  <div class="background-icon"><span class="icon-twitter"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Third Cards-->
+          <div v-for="card in cardData" key="card.id" class="column is-4">
+            <div class="card large">
+              <div class="card-image">
+                <figure class="image is-16by9">
+                  <img src="https://motionarray.imgix.net/preview-602366-MxFenHtnzi0yOYdC-large.jpg?w=3840&q=60&fit=max&auto=format" alt="Image">
                 </figure>
               </div>
               <div class="card-content">
@@ -92,6 +152,7 @@
             </div>
           </div>
         </div>
+        
       </div>
     </div>
     <footer class="footer">
@@ -105,6 +166,7 @@
         </div>
       </div>
     </footer>
+    
 
     <script src="../js/cardsData.js"></script>
 
