@@ -14,7 +14,7 @@ module.exports = {
       status: true,
       managerId: 1,
       hireDate: "2022-1-1",
-      terminateDate: "null",
+      terminateDate: null,
       createdAt: new Date(),
       updatedAt: new Date()
     }, 
@@ -29,7 +29,7 @@ module.exports = {
       status: false,
       managerId: 3,
       hireDate: "2021-6-6",
-      terminateDate: "null",
+      terminateDate: null,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -44,7 +44,7 @@ module.exports = {
       status: false,
       managerId: 2,
       hireDate: "2021-6-6",
-      terminateDate: "null",
+      terminateDate: null,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -59,7 +59,7 @@ module.exports = {
       status: false,
       managerId: 4,
       hireDate: "2021-6-6",
-      terminateDate: "null",
+      terminateDate: null,
       createdAt: new Date(),
       updatedAt: new Date()
     },
@@ -74,7 +74,7 @@ module.exports = {
       status: false,
       managerId: 4,
       hireDate: "2021-6-6",
-      terminateDate: "null",
+      terminateDate: null,
       createdAt: new Date(),
       updatedAt: new Date()
     },

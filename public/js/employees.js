@@ -6,6 +6,16 @@
 // such as delete, edit, create
 
 // 2. delete employee function to delete employee by and ID
+$document.ready(function () {
+  const deleteBtn = $(".delete-btn");
+  const editBtn = $(".edit-btn");
+  const createBtn = $(".create-btn");
+
+function handleEmployeeDelete() {}
+function handleEmployeeCreate() {}
+function deleteEmployee() {}
+
+
 
 const deleteEmployee = async (event) => {
 addEventListener("click", )
