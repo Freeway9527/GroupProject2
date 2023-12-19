@@ -6,17 +6,31 @@
 // such as delete, edit, create
 
 // 2. delete employee function to delete employee by and ID
-$document.ready(function () {
-  const deleteBtn = $(".delete-btn");
-  const editBtn = $(".edit-btn");
-  const createBtn = $(".create-btn");
 
-function handleEmployeeDelete() {}
-function handleEmployeeCreate() {}
-function deleteEmployee() {}
+  const deleteButton = document.getElementById('deleteButton');
+  const editButton = document.getElementById('editButton');
+  const createButton = document.getElementById('createButton');
+  const employeeId = (`/api/employees/:${id}`)
+  
+  deleteButton.addEventListener('click', () => deleteEmployee(employeeId));
+  editButton.addEventListener('click', () => editEmployee(employeeId));
+  createButton.addEventListener('click', createEmployee);
+  
+  
+  
+  async function deleteEmployee(employeeId) {
+    // Add code to delete employee by ID
+    await fetch(`/employees/:${employeeId}`, { method: 'DELETE' });
+  }
+  
+  async function editEmployee(employeeId) {
+    // Add code to edit employee
+    await fetch(`/employees/:${employeeId}`, { method: 'PUT' });
+  }
+  
+  async function createEmployee() {
+    // Add code to create employee
+    await fetch(`/employees`, { method: 'POST' });
+  }
 
 
-
-const deleteEmployee = async (event) => {
-addEventListener("click", )
-}
