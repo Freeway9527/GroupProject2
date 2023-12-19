@@ -1,3 +1,33 @@
-<!--------this is for the navigation bar----------------->
-<!--------Links should include, Home, Employee and Manager Links----------------->
-<!--------Should also display the users email when they logged in----------------->
+<nav class="py-2 bg-light border-bottom mb-4">
+  <div class="container d-flex flex-wrap">
+    <ul class="nav me-auto">
+      <li class="nav-item">
+        <a
+          href="/"
+          class="nav-link link-dark px-2 active"
+          aria-current="page"
+        >Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/employee" class="nav-link link-dark px-2">Employee</a>
+      </li>
+      <li class="nav-item">
+        <a href="/manager" class="nav-link link-dark px-2">Manager</a>
+      </li>
+    </ul>
+    <ul class="nav">
+      {{#if user}}
+        <li class="nav-item">
+          <span class="nav-link link-dark px-2">{{user.email}}</span>
+        </li>
+      {{/if}}
+      <li class="nav-item">
+        {{#if user}}
+          <a href="/logout" class="nav-link link-dark px-2">Logout</a>
+        {{else}}
+          <a href="/login" class="nav-link link-dark px-2">Login</a>
+        {{/if}}
+      </li>
+    </ul>
+  </div>
+</nav>
