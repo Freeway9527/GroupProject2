@@ -5,27 +5,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{employee.firstname}} {{employee.lastname}} Employee Details</title>
+    <title>Employees</title>
 </head>
 
 <body>
+<table>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Salary</th>
+    <th>Position</th>
+    <th>Status</th>
+    <th>Hire Date</th>
+    <th>Terminate Date</th>
+   {{#each employees}}
 
-    <h1>{{employee.firstname}} {{employee.lastname}} Details</h1>
-
-    <ul>
-        <li>ID:{{employee.id}}</li>
-        <li>Name:{{employee.firstname}} {{employee.lastname}}</li>
-        <li>Email:{{employee.email}}</li>
-        <li>Address:{{employee.address}}</li>
-        <li>Salary:{{employee.salary}}</li>
-        <li>Position:{{employee.position}}</li>
-        <li>Status:{{employee.status}}</li>
-        <li>Manager:{{employee.Manager.firstname}} {{employee.Manager.lastname}}</li>
-        <li>Hire Date:{{employee.hireDate}}</li>
-        <li>Terminate Date:{{employee.terminateDate}}</li>
-        
-    </ul>
-
+    
+        <tr>
+        <td>{{id}}</td>
+        <td>{{firstname}} {{lastname}}</td>
+        <td>{{email}}</td>
+        <td>{{address}}</td>
+        <td>{{salary}}</td>
+        <td>{{position}}</td>
+        <td>{{status}}</td>
+        <td>{{hireDate}}</td>
+        <td>{{terminateDate}}</td>
+        </tr>
+    
+{{/each}}
+</table>
 </body>
 
 </html>

@@ -54,6 +54,25 @@ function renderEmployees(req, res) {
   });
 }
 
+// Display single employee
+function renderEmployee(req, res) {
+  db.Employee.findOne({
+    where: {"id": req.params.id },
+    include: [db.Manager],
+    raw: true,
+    order: [['id', 'ASC']]
+  }).then((employees) => {
+    const data = employees.map((employee, index) => ({
+      ...employee,
+      no: index + 1,
+      status: employee.status ? "Regular" : "Otherwise",
+      hireDate: moment(employee.hireDate).format("MMM Do YYYY"),
+      terminateDate: employee.terminateDate ? moment(employee.terminateDate).format("MMM Do YYYY") : "N/A",
+    }))
+    res.render('employee', { employee: data, user: req.session.user })
+  });
+}
+
 // Display employee craete form
 function renderEmployeeCreate(req, res) {
   db.Manager.findAll().then((managers) => {
