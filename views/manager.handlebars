@@ -3,6 +3,39 @@
 <!---this form template would be used for editing or creating manager details. whether you are editing an existing 
 manager ({{#if manager}}) or creating a new one ({{else}})---->
 
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ManagerDetails}}</title>
+</head>
+
+<body>
+    <form id="managerForm">
+  <!-- Common Fields for Editing and Creating -->
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" value="{{#if manager}}{{manager.name}}{{/if}}" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" value="{{#if manager}}{{manager.email}}{{/if}}" required>
+
+  <!-- Additional Fields for Editing (if manager exists) -->
+  {{#if manager}}
+    <label for="position">Position:</label>
+    <input type="text" id="position" name="position" value="{{manager.position}}" required>
+  {{/if}}
+
+  <!-- Submit Button -->
+  <button type="submit">
+    {{#if manager}}
+      Update Manager
+    {{else}}
+      Add Manager
+    {{/if}}
+  </button>
+</form>
+</body>
 
 <script src="/js/manager.js"></script>
