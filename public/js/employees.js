@@ -11,6 +11,7 @@
   const editButton = document.getElementById('editButton');
   const createButton = document.getElementById('createButton');
   const employeeId = (`/api/employees/:${id}`)
+
   
   deleteButton.addEventListener('click', () => deleteEmployee(employeeId));
   editButton.addEventListener('click', () => editEmployee(employeeId));

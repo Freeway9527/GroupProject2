@@ -37,8 +37,8 @@
         <!-- emp status (active or not) -->
         <label for="status">Status:</label>
         <select id="status" name="status" required>
-            <option value="true" {{#if employee.status}}selected{{/if}}>Active</option>
-            <option value="false" {{#unless employee.status}}selected{{/unless}}>Inactive</option>
+            <option value="1" {{#if employee.status}}selected{{/if}}>Active</option>
+            <option value="0" {{#if employee.status}}selected{{/if}}>Inactive</option>
         </select>
 
         <!-- manager status -->
