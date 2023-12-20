@@ -7,9 +7,9 @@
 
 // 2. delete employee function to delete employee by and ID
 
-  const deleteButton = document.getElementById('deleteButton');
-  const editButton = document.getElementById('editButton');
-  const createButton = document.getElementById('createButton');
+  const deleteEmployeeButton = document.getElementById('deleteButton');
+  const editEmployeeButton = document.getElementById('editButton');
+  const createEmployeeButton = document.getElementById('createButton');
   const employeeId = (`/api/employees/:${id}`)
   
   deleteButton.addEventListener('click', () => deleteEmployee(employeeId));
@@ -18,17 +18,24 @@
   
   
   
-  async function deleteEmployee(employeeId) {
-    // Add code to delete employee by ID
-    await fetch(`/employees/:${employeeId}`, { method: 'DELETE' });
-  }
+  function deleteEmployeeButton(id) {
+  // Send an AJAX request to the server to delete an employee with the given 'id'
+  $.ajax({
+    method: "DELETE",                  // HTTP method for the request (DELETE in this case)
+    url: "/api/employees/" + id        // URL for the API endpoint to delete the employee
+  })
+    .then(function () {
+      // Once the deletion is successful, remove the corresponding element from the DOM
+      $(`[data-employee=${id}]`).remove();  // Find and remove the element with 'data-employee' attribute matching 'id'
+    });
+}
   
-  async function editEmployee(employeeId) {
+  async function editEmployeeButton(employeeId) {
     // Add code to edit employee
     await fetch(`/employees/:${employeeId}`, { method: 'PUT' });
   }
   
-  async function createEmployee() {
+  async function createEmployeeButton() {
     // Add code to create employee
     await fetch(`/employees`, { method: 'POST' });
   }

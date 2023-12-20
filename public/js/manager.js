@@ -8,7 +8,35 @@
       // error: (msg) => {
         // showAlert(msg.statusText)
         // }
-        const createUpdateEmployee = async (event) => {
-        event.preventDefault();
-        addEventListener("click", )
-        }
+
+        import { showAlert } from './alert.js';
+        const editManagerBttn = document.getElementById("editManagerBttn");
+        
+      
+      const handleError = (msg) => {
+          showAlert(msg.statusText);
+          console.error(msg);
+        };
+
+        const createUpdateManager = (event) => {
+          editManagerBttn.addEventListener("click", redirectToManagerPage);
+          event.preventDefault();
+          try {
+            redirectToManagerPage();
+          } catch (error) {
+            // If an error occurs, handle it
+            handleError(error);
+          }
+        };
+
+        createUpdateManager();
+    
+        // Initialize the page
+        
+        
+        const redirectToManagerPage = () => {
+          window.location.assign('/manager');
+        };
+        // Example of triggering an error (modify as per your needs)
+        const error = new Error("An error occurred");
+        handleError(error);
